@@ -1,11 +1,11 @@
 import CurrencyList from "@/components/CurrencyList";
 import { dictionaries } from "./dictionary";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
-import { Direction } from "@/types";
+import { Direction, Locale } from "@/types";
 
 type Props = {
   params: {
-    lang: "lv" | "he" | "en"
+    lang: Locale
   }
 }
 
