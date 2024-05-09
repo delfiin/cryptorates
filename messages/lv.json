@@ -1,0 +1,5 @@
+{
+  "title": "Kriptovalūtu kurss",
+  "fetchError": "Neizdevās iegūt valūtas kursus",
+  "loading": "Notiek ielāde..."
+}
