@@ -1,8 +1,9 @@
+import { Direction } from "@/types";
 import Image from "next/image";
 
 type Props = {
   crypto: string;
-  dir: "ltr" | "rtl";
+  dir: Direction;
 };
 
 export default function CryptoIcon({ crypto, dir }: Props) {

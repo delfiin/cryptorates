@@ -3,50 +3,55 @@
 import { useEffect, useState } from "react";
 import CryptoIcon from "./CryptoIcon";
 import { dictionaries } from "@/app/[lang]/dictionary";
+import { Direction, Locale } from "@/types";
 
-async function getCurrencyRates(lang: "en" | "lv" | "he") {
+async function getCurrencyRates() {
   try {
     const res = await fetch('https://api.coinbase.com/v2/exchange-rates?currency=EUR')
 
     if (!res.ok) {
-      throw new Error(dictionaries[lang].fetchError)
+      throw new Error("fetchError")
     }
 
     return res.json()
   } catch (e) {
-    throw new Error(dictionaries[lang].networkError);
+    throw new Error("networkError");
   }
 }
 
 type Props = {
-  dir: "ltr" | "rtl";
-  lang: "en" | "lv" | "he";
+  lang: Locale;
 };
 
-export default function CurrencyList({ dir, lang }: Props) {
+export default function CurrencyList({ lang }: Props) {
   const [rates, setRates] = useState({} as any);
   const [error, setError] = useState("" as any);
+  const locale = dictionaries[lang];
 
   useEffect(() => {
     async function runEffect() {
       setError("");
       try {
-        const { data: { rates: _rates } } = await getCurrencyRates(lang);
+        const { data: { rates: _rates } } = await getCurrencyRates();
         setRates(_rates);
       } catch (e: any) {
         setRates({});
-        setError(e.message);
+        setError(locale[e.message as "fetchError" | "networkError"]);
       }
     }
     runEffect();
   }, [])
 
+  const dir = locale.dir as Direction;
+
   if (error) {
-    return <span style={{ color: "white", marginTop: "33px", fontSize: "16px" }}>{error}</span>;
+    return <span className="message">
+      {dir === "ltr" ? "⛔ " : ""}{error}{dir === "rtl" ? " ⛔" : ""}
+    </span>;
   }
 
   if (Object.keys(rates).length < 1) {
-    return <span style={{ color: "white", marginTop: "33px", fontSize: "16px" }}>{dictionaries[lang].loading}</span>;
+    return <span className="message">{locale.loading}</span>;
   }
 
   const elements = Object.keys(rates).map(crypto => {

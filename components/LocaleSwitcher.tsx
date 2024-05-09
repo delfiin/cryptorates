@@ -2,10 +2,11 @@
 
 import { useCallback } from "react";
 import { useRouter } from 'next/navigation'
+import { Direction, Locale } from "@/types";
 
 type Props = {
-  current: "lv" | "en" | "he",
-  dir: "rtl" | "ltr"
+  current: Locale,
+  dir: Direction
 }
 
 const locales = {
