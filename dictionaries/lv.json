@@ -1,0 +1,7 @@
+{
+  "dir": "ltr",
+  "title": "Kriptovalūtu kurss",
+  "fetchError": "Neizdevās iegūt valūtas kursus",
+  "networkError": "Tīkla kļūda, iegūstot valūtas kursus",
+  "loading": "Notiek ielāde"
+}

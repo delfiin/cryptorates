@@ -1,0 +1,7 @@
+{
+  "dir": "ltr",
+  "title": "Cryptocurrency rates",
+  "fetchError": "Failed to fetch currency rates",
+  "networkError": "Network error while fetching currency rates",
+  "loading": "Loading..."
+}

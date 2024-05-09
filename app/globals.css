@@ -17,17 +17,29 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background: linear-gradient(to right,
+      #070F2B,
+      #1B1A55);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.rate-item {
+  background: #9290C3;
+}
+
+.rate-item:nth-child(odd) {
+  background: #535C91;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 6px;
+  font-size: 22px;
+  font-weight: 600;
 }
