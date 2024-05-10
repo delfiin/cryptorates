@@ -28,8 +28,8 @@ export default function CurrencyList() {
     async function runEffect() {
       setError("");
       try {
-        const { data: { rates: _rates } } = await getCurrencyRates();
-        setRates(_rates);
+        const { data: { rates } } = await getCurrencyRates();
+        setRates(rates);
       } catch (e) {
         setRates({});
         setError(t((e as Error).message));
